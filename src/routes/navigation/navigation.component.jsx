@@ -15,25 +15,28 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col flex-1 w-full">
+
       <div className="h-10 bg-orange-header w-full flex justify-center items-center text-white">
         Two Tales Publishing
       </div>
 
-      <div className="border border-gray-200 flex justify-between px-12 items-center py-2">
-        <div className="flex space-x-6">
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
+      <div className="border border-gray-200 items-center py-2 w-full">
+        <div className='mx-auto max-w-7xl flex justify-between'>
+          <div className="flex space-x-6">
+            <Link to="/">Home</Link>
+            <Link to="/shop">Shop</Link>
+          </div>
+          <div className="flex items-center space-x-6">
+            {currentUser ? (
+              <span onClick={signOutUser}>Sign Out</span>
+              ) : (
+                <Link to="auth">Sign In</Link>
+                )}
+            <CartIcon />
+          </div>
+          {isCartOpen && <CartDropdown />}
         </div>
-        <div className="flex items-center space-x-6">
-          {currentUser ? (
-            <span onClick={signOutUser}>Sign Out</span>
-          ) : (
-            <Link to="auth">Sign In</Link>
-          )}
-          <CartIcon />
-        </div>
-        {isCartOpen && <CartDropdown />}
       </div>
 
       <Outlet />
