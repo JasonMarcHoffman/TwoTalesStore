@@ -1,15 +1,44 @@
-import DirectoryItem from "../directory-item/directory-item.component";
+import DirectoryItem from '../directory-item/directory-item.component';
 
-const Directory = ({ categories }) => {
+const categories = [
+  {
+    id: 1,
+    title: 'hats',
+    imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+    route: 'shop/hats',
+  },
+  {
+    id: 2,
+    title: 'jackets',
+    imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+    route: 'shop/jackets',
+  },
+  {
+    id: 3,
+    title: 'sneakers',
+    imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+    route: 'shop/sneakers',
+  },
+  {
+    id: 4,
+    title: 'womens',
+    imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+    route: 'shop/womens',
+  },
+  {
+    id: 5,
+    title: 'mens',
+    imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+    route: 'shop/mens',
+  },
+];
+
+const Directory = () => {
   return (
-    <div className="bg-gray-500 py-12">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto mt-8 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {categories.map((category) => (
-            <DirectoryItem key={category.id} category={category} />
-          ))}
-        </div>
-      </div>
+    <div>
+      {categories.map((category) => (
+        <DirectoryItem key={category.id} category={category} />
+      ))}
     </div>
   );
 };

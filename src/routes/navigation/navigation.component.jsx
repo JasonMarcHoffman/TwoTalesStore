@@ -15,8 +15,8 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
-    <div className="bg-gray-50 flex flex-col h-full">
-      <div className="h-10 bg-gray-200 w-full flex justify-center items-center">
+    <div className="flex flex-col h-full">
+      <div className="h-10 bg-orange-header w-full flex justify-center items-center text-white">
         Two Tales Publishing
       </div>
 
@@ -37,7 +37,6 @@ const Navigation = () => {
       </div>
 
       <Outlet />
-
       <Footer />
     </div>
   );
