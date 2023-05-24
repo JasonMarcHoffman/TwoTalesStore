@@ -3,15 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { addItemToCart } from '../../store/cart/cart.action';
 
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-
-import {
-  ProductCartContainer,
-  Footer,
-  Name,
-  Price,
-} from './product-card.styles';
-
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
   const dispatch = useDispatch();
@@ -20,19 +11,14 @@ const ProductCard = ({ product }) => {
   const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
   return (
-    <ProductCartContainer>
-      <img src={imageUrl} alt={`${name}`} />
-      <Footer>
-        <Name>{name}</Name>
-        <Price>{price}</Price>
-      </Footer>
-      <Button
-        buttonType={BUTTON_TYPE_CLASSES.inverted}
-        onClick={addProductToCart}
-      >
-        Add to card
-      </Button>
-    </ProductCartContainer>
+    <div className='flex flex-col'>
+      <div className="flex border border-gray-200 p-2 justify-between">
+        <p>{name}</p>
+        <p>{price}</p>
+        {/* <img src={imageUrl} alt={`${name}`} /> */}
+      </div>
+      <div onClick={addProductToCart} className='cursor-pointer text-sm text-blue-500'>Add to cart</div>
+    </div>
   );
 };
 

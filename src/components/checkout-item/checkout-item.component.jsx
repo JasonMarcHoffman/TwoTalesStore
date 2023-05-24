@@ -7,16 +7,6 @@ import {
 } from '../../store/cart/cart.action';
 import { selectCartItems } from '../../store/cart/cart.selector';
 
-import {
-  CheckoutItemContainer,
-  ImageContainer,
-  BaseSpan,
-  Quantity,
-  Arrow,
-  Value,
-  RemoveButton,
-} from './checkout-item.styles';
-
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
@@ -28,21 +18,36 @@ const CheckoutItem = ({ cartItem }) => {
   const removeItemHandler = () =>
     dispatch(removeItemFromCart(cartItems, cartItem));
 
-  return (
-    <CheckoutItemContainer>
-      <ImageContainer>
-        <img src={imageUrl} alt={`${name}`} />
-      </ImageContainer>
-      <BaseSpan> {name} </BaseSpan>
-      <Quantity>
-        <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
-        <Value>{quantity}</Value>
-        <Arrow onClick={addItemHandler}>&#10095;</Arrow>
-      </Quantity>
-      <BaseSpan> {price}</BaseSpan>
-      <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
-    </CheckoutItemContainer>
-  );
+    return (
+      <div className="flex space-x-10 border border-gray-200 p-2 mb-4">
+        <div>
+          {/* <img src={imageUrl} alt={`${name}`} /> */}
+          IMAGE
+        </div>
+        <div className="flex flex-col space-y-2">
+          <span>{name}</span>
+          <span className="flex space-x-3">
+            <p
+              className="bg-gray-200 border bprder-gray-200 py-1 px-3 rounded-full font-medium"
+              onClick={removeItemHandler}
+            >
+              -
+            </p>
+            <span>QTY: {quantity}</span>
+            <p
+              className="bg-gray-200 border bprder-gray-200 py-1 px-3 rounded-full font-medium"
+              onClick={addItemHandler}
+            >
+              +
+            </p>
+          </span>
+          <span>Price: ${price}</span>
+        </div>
+        <div className="text-red-400 cursor-pointer" onClick={clearItemHandler}>
+          Remove &#10005;
+        </div>
+      </div>
+    );
 };
 
 export default CheckoutItem;

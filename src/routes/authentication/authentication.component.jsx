@@ -1,14 +1,14 @@
 import SignUpForm from '../../components/sign-up-form/sign-up-form.component';
 import SignInForm from '../../components/sign-in-form/sign-in-form.component';
 
-import { AuthenticationContainer } from './authentication.styles';
-
 const Authentication = () => {
   return (
-    <AuthenticationContainer>
-      <SignInForm />
-      <SignUpForm />
-    </AuthenticationContainer>
+    <div>
+      <div className="flex space-x-12 mx-12 py-12">
+        <SignUpForm />
+        <SignInForm />
+      </div>
+    </div>
   );
 };
 
