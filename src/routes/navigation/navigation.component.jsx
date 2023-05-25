@@ -26,6 +26,8 @@ const Navigation = () => {
           <div className="flex space-x-6">
             <Link to="/">Home</Link>
             <Link to="/shop">Shop</Link>
+            <Link to="/our-story">Our Story</Link>
+            <Link to="/contact-us">Contact Us</Link>
           </div>
           <div className="flex items-center space-x-6">
             {currentUser ? (
