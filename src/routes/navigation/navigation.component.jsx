@@ -25,7 +25,7 @@ const Navigation = () => {
         <div className='mx-auto max-w-7xl flex justify-between'>
           <div className="flex space-x-6">
             <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
+            <Link to="/shop">Library</Link>
             <Link to="/our-story">Our Story</Link>
             <Link to="/contact-us">Contact Us</Link>
           </div>
