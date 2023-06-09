@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import HomeHeroBanner from '../../components/home-hero-banner/home-hero-banner.component'
 import BookReader from '../../components/book-reader/book-reader.component';
 import Book from '../../components/pdf-book/pdf-book.component';
+import FamilyFeature from '../../components/family-feature/family-feature.component';
 
 import FrequentlyAskedQuestions from "../../components/frequently-asked-questions/frequently-asked-questions.component";
 
@@ -14,7 +15,7 @@ const Home = () => {
       {/* <BookTabs /> */}
       {/* <Directory /> */}
 
-      <div className='bg-red-100 mx-auto max-w-7xl mb-12'>
+      <div className='bg-red-100 mx-auto max-w-7xl'>
         <BookReader />
       </div>
 
@@ -23,6 +24,8 @@ const Home = () => {
             <Book />
         </div> 
       */}
+
+      <FamilyFeature />
 
       <FrequentlyAskedQuestions />
       <Outlet />
