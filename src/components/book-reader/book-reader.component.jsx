@@ -1,79 +1,65 @@
 import React, { useState } from 'react';
 
 const BookReader = () => {
-  const [isBookOpen, setBookOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('cover');
 
-  const openBook = () => {
-    setBookOpen(true);
-    setCurrentPage(1);
-  };
+  // this will be the pages of the book... 
+  const pageContent = [
+    'Page 1 Content',
+    'Page 2 Content',
+    'Page 3 Content',
+    'Page 4 Content',
+    'Page 5 Content',
+    'Page 6 Content',
+    'Page 7 Content',
+    'Page 8 Content',
+    'Page 9 Content',
+    'Page 10 Content',
+  ];
 
-  const closeBook = () => {
-    setBookOpen(false);
-    setCurrentPage('cover');
-  };
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const turnPage = () => {
-    if (currentPage === 'cover') {
-      setCurrentPage(1);
-    } else if (currentPage === 'back') {
-      setCurrentPage('cover');
-    } else {
-      setCurrentPage((prevPage) => {
-        if (prevPage < 10) {
-          return prevPage + 2;
-        } else {
-          return 'back';
-        }
-      });
+  const handlePageBack = () => {
+    if (currentPage === 'backCover') {
+      setCurrentPage(0);
+    } else if (currentPage > 0) {
+      setCurrentPage(currentPage - 2);
     }
   };
 
-  const getPageContent = (page) => {
-    if (page === 'cover') {
-      return <p>Book Cover</p>;
-    } else if (page === 'back') {
-      return <p>Back Cover</p>;
+  const handlePageNext = () => {
+    if (currentPage < pageContent.length - 1) {
+      setCurrentPage(currentPage + 2);
     } else {
-      return <p>Page {page} Content Goes Here</p>;
+      setCurrentPage('backCover');
     }
-  };
-
-  const renderPages = () => {
-    const pages = [];
-    if (currentPage === 'cover') {
-      pages.push(<div key="cover">{getPageContent('cover')}</div>);
-    } else if (currentPage === 'back') {
-      pages.push(<div key="back">{getPageContent('back')}</div>);
-    } else {
-      pages.push(<div key={currentPage}>{getPageContent(currentPage)}</div>);
-      if (currentPage + 1 <= 10) {
-        pages.push(<div key={currentPage + 1}>{getPageContent(currentPage + 1)}</div>);
-      }
-    }
-    return pages;
   };
 
   return (
-    <div className='p-6 flex justify-center h-[50vh]'>
-      {isBookOpen ? (
-        <div>
-          <div onClick={turnPage}>
-            {/* Display current pages */}
-            {renderPages()}
+    <div className='h-[50vh] w-full bg-orange-header p-12'>
+      <div className='bg-white h-full'>
+        {currentPage === 0 ? (
+          <div onClick={handlePageNext} className='bg-white h-full'>
+            <h2>Book Front Cover</h2>
           </div>
-          <div onClick={closeBook}>
-            {/* Display back cover */}
-            {currentPage === 10 && <div>{getPageContent('back')}</div>}
+        ) : currentPage === 'backCover' ? (
+          <div>
+            <div onClick={() => setCurrentPage(0)}>
+              <h2>Book Back Cover</h2>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div onClick={openBook}>
-          {/* Display book cover */}
-          {getPageContent('cover')}
-        </div>
-      )}
+        ) : (
+          <div className='h-full'>
+            <div className='flex justify-between h-full'>
+              <h2 className='bg-gray-50 border border-gray-200 h-full w-full'>{pageContent[currentPage - 1]}</h2>
+              <h2 className='bg-gray-50 border border-gray-200 h-full w-full'>{pageContent[currentPage]}</h2>
+            </div>
+            <div className='flex justify-between'>
+              <button onClick={handlePageBack}>Back</button>
+              <button onClick={handlePageNext}>Next</button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
