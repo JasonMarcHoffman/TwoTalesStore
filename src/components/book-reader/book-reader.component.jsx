@@ -35,23 +35,21 @@ const BookReader = () => {
   };
 
   return (
-    <div className='h-[50vh] w-full bg-orange-header p-12'>
-      <div className='bg-white h-full'>
+    <div className='h-[50vh] w-full bg-white p-12 border border-gray-100'>
+      <div className='h-full'>
         {currentPage === 0 ? (
-          <div onClick={handlePageNext} className='bg-white h-full'>
-            <h2>Book Front Cover</h2>
+          <div onClick={handlePageNext} className='h-full flex justify-center'>
+            <div className='w-1/2 bg-white border border-gray-100 p-4'>Book Front Cover</div>
           </div>
         ) : currentPage === 'backCover' ? (
-          <div>
-            <div onClick={() => setCurrentPage(0)}>
-              <h2>Book Back Cover</h2>
-            </div>
+          <div onClick={() => setCurrentPage(0)} className='h-full flex justify-center'>
+            <div className='w-1/2 bg-white border border-gray-100 p-4'>Book Back Cover</div>
           </div>
         ) : (
           <div className='h-full'>
             <div className='flex justify-between h-full'>
-              <h2 className='bg-gray-50 border border-gray-200 h-full w-full'>{pageContent[currentPage - 1]}</h2>
-              <h2 className='bg-gray-50 border border-gray-200 h-full w-full'>{pageContent[currentPage]}</h2>
+              <h2 className='bg-white border border-gray-100 h-full w-full p-4'>{pageContent[currentPage - 1]}</h2>
+              <h2 className='bg-white border border-gray-100 h-full w-full p-4'>{pageContent[currentPage]}</h2>
             </div>
             <div className='flex justify-between'>
               <button onClick={handlePageBack}>Back</button>
